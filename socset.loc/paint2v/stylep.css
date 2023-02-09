@@ -1,0 +1,143 @@
+.colorButtons {
+    display: block;
+    margin: 20px 0;
+}
+
+canvas {
+    cursor: crosshair;
+}
+
+div#sidebar {
+    position: absolute;
+    left: 50px;
+    width: 350px;
+    height: 650px;
+    padding: 20px 20px 40px 20px;
+    top: 0;
+    overflow: auto;
+}
+
+canvas#canvas {
+    left: 410px;
+    top: 45px;
+}
+
+.btn {
+    margin-bottom: 10px;
+    width: 100%;
+}
+input {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.input-group {
+    margin-bottom: 10px;
+}
+
+.toolsButtons .btn {
+    width: 48%;
+}
+
+.sizeButtons .btn {
+    width: 48%;
+}
+
+.colorpicker {
+    background: transparent;
+    height: 40px;
+}
+
+.filter-btn {
+    width: 50px;
+    height: 40px;
+    font-size: 15px;
+}
+.btn-disabled {
+    width: 200px;
+    font-size: 20px;
+}
+span {
+    font-size: 15px;
+}
+.form-control {
+    height: 30px;
+    font-size: 15px;
+}
+.btn-warning {
+    font-size: 15px;
+}
+.updateSize {
+    font-size: 15px;
+}
+.custom-file {
+    width: 280px;
+    /* height: 35px; */
+    font-size: 15px;
+}
+.marginal {
+    margin-top: 30px;
+}
+.btn-danger {
+    height: 35px;
+    background: rgb(250, 135, 135);
+}
+
+.preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    /* фоновый цвет */
+    background: #e0e0e0;
+    z-index: 1001;
+}
+
+.preloader__image {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width: 70px;
+    height: 70px;
+    margin-top: -35px;
+    margin-left: -35px;
+    text-align: center;
+    animation: preloader-rotate 2s infinite linear;
+}
+
+@keyframes preloader-rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loaded_hiding .preloader {
+    transition: 0.3s opacity;
+    opacity: 0;
+}
+
+.loaded .preloader {
+    display: none;
+}
+
+#startTestingBtn{
+    font-size: 18px;
+    color: rgb(225, 48, 42);
+}
+#stopDrawingBtn{
+    font-size: 15px;
+}
+#resultTestingBtn{
+    font-size: 15px;
+}
+#stopTestingBtn{
+    font-size: 15px;
+}
+.btnmodal1{
+    width: 200px;
+    height: 40px;
+    font-size: 3px;
+    color: rgb(24, 25, 59);
+}

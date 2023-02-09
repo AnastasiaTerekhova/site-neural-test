@@ -1,0 +1,130 @@
+ a{
+  text-decoration: none;
+ }
+ .contentpsy{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ } 
+
+.flex-galery {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 78%;
+    margin: 0 auto;
+  }
+  .item-galery img{
+    width: 250px;
+    height: 150px;
+    padding: 15px 15px 0 15px;
+    border-radius: 25px;
+  }
+  .item-galery p{
+    font-size: 13px;
+    padding-bottom: 10px;
+  }
+  .item-galery h4{
+    font-size: 14px;
+    padding-bottom: 10px;
+  }
+  .item-galery {
+    flex: 1 1 calc(33.33% - 80px);
+    margin: 30px;
+    box-sizing: border-box;
+    min-width: 250px;
+    max-height: 330px;
+    font-size: 400%;
+    text-align: center;
+    border: 1px solid #032133e8;
+    border-radius: 23px;
+    box-shadow: 25px 32px 14px -34px #000000;
+  }
+  .galery-text {
+    font-family: "Raleway";
+    text-align: center;
+    font-weight: lighter;
+    color: #032133e8;
+  }
+ 
+  .galery-text h2 {
+    margin-top: 50px;
+    margin-left: 230px;
+    font-size: 25px;
+  }
+  .btn-galery,
+  #submit {
+    border: 1px solid #59b4bf;
+    border-radius: 17px;
+    width: 150px;
+    height: 35px;
+    font: inherit;
+    color: inherit;
+    background: #59b4bf;
+    color: #c7ebf8;
+    /* text-transform: uppercase; */
+    font-weight: 600;
+    font-family: "Raleway";
+    /* letter-spacing: 0.2rem; */
+    transition: 0.3s;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
+  #submit {
+    color: #f4f8fa;
+    font-size: 13px;
+    margin-top: 30px;
+  }
+  .btn-galery a {
+    color: #f4f8fa;
+    font-size: 13px;
+  }
+  .btn-galery:hover,
+  #submit:hover {
+    background: #1a6797;
+    border: 1px solid #1a6797;
+    cursor: pointer;
+  }
+  .item-galery:hover {
+    box-shadow: 0px 3px 13px -7px #2d6b95;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+
+
+ .psysearch{
+width: 300px;
+height: 500px;
+margin-top: -280px;
+/* background: #1a6797; */
+/* display: flex; */
+/* align-items: center; */
+/* justify-content: center; */
+} 
+
+.styled select {
+  background: transparent;
+  width: 250px;
+  font-size: 16px;
+  border: 1px solid #CCC;
+  height: 34px;
+}
+.styled {
+  margin-top: 10px;
+  margin-left: 20px;
+  width: 250px;
+  height: 34px;
+  border: 1px solid #111;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.psyinf{
+  margin-top: 25px;
+  margin-left: 20px;
+}

@@ -1,0 +1,188 @@
+﻿/*
+ * Emily Photo Editor For Web (EPE)
+ *
+ * https://github.com/Emily1997/emily1997.github.io
+ *
+ */
+
+body
+{
+    margin: 0px;
+    border: 0px;
+    overflow: hidden;
+}
+
+
+.Toolbar
+{
+    width: 100%;
+    height: 80px;
+    background-color: #eeeeee;
+}
+
+.Footbar
+{
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    background-color: #eeeeee;
+}
+
+#status
+{
+    padding-left: 10px;
+}
+
+#editor
+{
+    text-align: right;
+}
+
+#editor img
+{
+    width: 30px;
+    height: 30px;
+}
+
+#processor
+{
+    text-align: right;
+}
+
+#processor img
+{
+    width: 30px;
+    height: 30px;
+}
+
+#io img
+{
+    width: 30px;
+    height: 30px;
+}
+
+.Toolbar span
+{
+    text-align: left;
+}
+
+.Toolbar img
+{
+    cursor: pointer;
+    margin-left: 2px;
+    margin-right: 2px;
+    vertical-align: middle;
+}
+
+.pressed
+{
+    background-color: #CCCCCC;
+}
+
+#main
+{
+    border: 0px;
+}
+
+
+#album
+{
+    width: 200px;
+    overflow: auto;
+    text-align: center;
+    vertical-align: top;
+    background-color: #e4eff9;
+}
+
+
+#pad
+{
+    overflow: auto;
+    vertical-align: middle;
+    text-align: center;
+    align-content: center;
+}
+
+#drop
+{
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+    background-color: #eeeeee;
+    border: 0px solid #aad7ff;
+}
+
+#c
+{
+    vertical-align: middle;
+}
+
+
+#props
+{
+/* padding: 10px 10px 10px 10px; */
+    margin-left: -10px;
+    text-align: center;
+    vertical-align: top;
+    overflow: auto;
+    background-color: #e4eff9;
+}
+
+.thumbnail
+{
+    cursor: pointer;
+    width: 85px;
+    height: 85px;
+    margin: 5px;
+}
+
+
+
+.ColorPicker
+{
+    background-color: #ffffff;
+    border-collapse: collapse;
+    border: 1px solid #808080;
+}
+
+.ColorPicker td
+{
+    border: 1px solid #808080;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+
+.SizePicker
+{
+    background-color: #ffffff;
+    border-collapse: collapse;
+    border: 1px solid #808080;
+}
+
+.SizePicker td
+{
+    color: black;
+    font-size: 9pt;
+    border: 1px solid #808080;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+.SelectedArea
+{
+    border: 1px solid red;
+}
+
+.progress
+{
+    font-size: 9pt;
+    text-align: center;
+}
+
+

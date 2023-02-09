@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>TrainImages</title>
+        <style>
+            #images {
+                position: relative;
+                justify-content: center;
+                margin: 0 auto;
+            }
+            .container {
+                width: 300px;
+                height: 350px;
+                display: inline-block;
+                margin-left: 40px;
+                margin-top: 20px;
+            }
+            .img {
+                border: solid 2px black;
+                width: 300px;
+                height: 300px;
+            }
+            .delBtn {
+                width: 304px;
+            }
+            .text {
+                width: 300px;
+                text-align: center;
+                border: solid 2px black;
+                border-bottom: 0;
+                margin: 0px;
+            }
+        </style>
+    </head>
+    <body>
+        <a href="painter.html">Назад</a>
+        <h1>Картинки для обучения сети</h1>
+        <div id="images"></div>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script>
+            var imagesContainer = document.getElementById('images');
+            axios
+                .get('http://localhost:5000/network/getAllTrainData', {})
+                .then((response) => {
+                    response.data.forEach((element) => {
+                        var category = element.split('.')[0].split('_')[1];
+                        var div = document.createElement('div');
+                        div.className = 'container';
+                        imagesContainer.appendChild(div);
+
+                        var text = document.createElement('p');
+
+                        text.className = 'text';
+
+                        if (category == '0') {
+                            text.innerText = 'Что-то другое';
+                        }
+                        if (category == '1') {
+                            text.innerText =
+                                'Сеть думает что тут изображен дом  ';
+                        }
+
+                        div.appendChild(text);
+
+                        var elem = document.createElement('img');
+                        elem.className = 'img';
+                        elem.src = 'http://localhost:5000/tn/' + element;
+
+                        div.appendChild(elem);
+                        var x = document.createElement('button');
+                        x.className = 'delBtn';
+                        x.addEventListener('click', function () {
+                            axios
+                                .post(
+                                    'http://localhost:5000/network/deleteImg',
+                                    {
+                                        train: true,
+                                        name: element,
+                                    }
+                                )
+                                .then((response) => {
+                                    window.location.reload();
+                                });
+                        });
+                        x.textContent = 'Удалить';
+                        div.appendChild(x);
+                    });
+                });
+        </script>
+    </body>
+</html>

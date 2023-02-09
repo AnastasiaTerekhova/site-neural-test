@@ -1,0 +1,177 @@
+﻿<!--This is the only page for this SPA.-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Художник - фоторедактор</title>
+
+    <!-- the javascripts-->
+    <script type="text/ecmascript" src="layout.js"></script>
+    <script type="text/ecmascript" src="epe.js"></script>
+    <script type="text/ecmascript" src="draw.js"></script>
+    <script type="text/ecmascript" src="process.js"></script>
+    <script type="text/ecmascript" src="tools.js"></script>
+
+    <!-- the stylesheet-->
+    <!-- <link rel="icon" type="image/png" href="favicon.png"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"/>
+    <link rel="stylesheet" type="text/css" href="epe.css" />
+    <!-- <link rel="stylesheet" href="assets/index.css"> -->
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+        #editor img{
+            height: 20px;
+            width: 20px;
+            margin: 15px;
+
+        }
+       
+    </style>
+
+</head>
+
+<!--Initialize the page and the canvas with initial size and color of the paintbrush when loading the page.-->
+
+<body onload="EPE_Init('c',  10, '#FF0000')">
+    <table cellpadding="0" cellspacing="0">
+
+        <!--the header containing the page/window's title and toolbar.-->
+        <tr id="toolbar" class="Toolbar" ondrop="EPE_DropOut(event)" ondragover="EPE_AllowDrop(event)">
+            <td colspan="3">
+                <table style="width: 100%">
+                    <tr>
+                        <!--the windows's title-->
+                        <td style="padding-left: 5px; white-space: nowrap">
+                            <span><a href="../index.html">
+                                <img src="images/home.svg" style="width: 40px; height: 40px; padding-left: 10px;" /></a></span>
+                            <span style="width: 400px; height: 50px; padding-right: 10px">
+                                Художник</span>
+                        </td>
+                        <!--the buttons for editing (at drawing state)-->
+                        <!--all buttons will be lightened while mouse on them, refer to EPE_BrightButton()-->
+                        <td id="editor">
+                            <img src="images/open.png" onclick="EPE_Load(this)" onmouseover="EPE_BrightButton(this,true)" onmouseout="EPE_BrightButton(this,false)" title="Open your photos" />
+                            <img id="bsave" src="images/save.png" onclick="EPE_Save(this)" onmouseover="EPE_BrightButton(this,true)" onmouseout="EPE_BrightButton(this,false)" title="Сохранить" />
+                            <img id="bclear" src="images/clear.png" onclick="EPE_Clear(this)" onmouseover="EPE_BrightButton(this,true)" onmouseout="EPE_BrightButton(this,false)" title="Удалить фото" />
+                            <img id="bpen" src="images/pen.png" onclick="EPE_Pen(this)" onmouseover="EPE_BrightButton(this,true)" onmouseout="EPE_BrightButton(this,false)" title="Кисть" />
+                            <img id="beraser" src="images/eraser.png" onclick="EPE_Eraser(this)" onmouseover="EPE_BrightButton(this,true)" onmouseout="EPE_BrightButton(this,false)" title="Стереть" />
+                            <img id="bselect" src="images/select.png" onclick="EPE_Select(this)" onmouseover="EPE_BrightButton(this,true)" onmouseout="EPE_BrightButton(this,false)" title="Вырезать" />
+                            <img id="bresize" src="images/resize.png" onclick="EPE_StartResize()" onmouseover="EPE_BrightButton(this,true)" onmouseout="EPE_BrightButton(this,false)" title="Resize the canvas with mouse wheel..." />
+                            <img id="brotate" src="images/rotate.png" onclick="EPE_StartRotate()" onmouseover="EPE_BrightButton(this,true)" onmouseout="EPE_BrightButton(this,false)" title="Rotate the photo with mouse wheel..." />
+<!-- юююююююююю -->
+  <!-- <div class="active-tool">
+            <span id="active-tool" title="Active Tool">Brush</span>
+        </div> -->
+        <!-- Brush -->
+        <!-- <div class="brush tool">
+            <i class="fas fa-brush" id="brush" title="Brush"></i>
+            <input class="jscolor" value="a51dab" id="brush-color">
+            <input type="range" min="1" max="50" value="10" class="slider" id="brush-slider">
+        </div> -->
+<!-- юююююююююю -->
+
+            <img id="brush-color"  src="images/pencolor.png" onclick="EPE_SelectColor(this)" onmouseover="EPE_BrightButton(this,true)" onmouseout="EPE_BrightButton(this,false)" title="Select the color of pen" />
+                            
+
+                            <img id="bpickcolor" src="images/pickcolor.png" onclick="EPE_PickColor(this)" onmouseover="EPE_BrightButton(this,true)" onmouseout="EPE_BrightButton(this,false)" title="Pick a color from canvas" />
+                            <img id="bsize" src="images/pensize.png" onclick="EPE_PenSize(this)" onmouseover="EPE_BrightButton(this,true)" onmouseout="EPE_BrightButton(this,false)" title="Select size of pen" />
+                            <img id="bflip" src="images/flip.png" onclick="EPE_Process(8)" onmouseover="EPE_BrightButton(this,true)" onmouseout="EPE_BrightButton(this,false)" title="Flip the photo" />
+                            <img id="bscaleup" src="images/scaleup.png" onclick="EPE_Scale(2)" onmouseover="EPE_BrightButton(this,true)" onmouseout="EPE_BrightButton(this,false)" title="Scale 100%" />
+                            <img id="bscaledown" src="images/scaledown.png" onclick="EPE_Scale(0.5)" onmouseover="EPE_BrightButton(this,true)" onmouseout="EPE_BrightButton(this,false)" title="Scale 50%" />
+                            <img id="bprocessing" src="images/processing.png" onclick="EPE_OpenProcessor()" onmouseover="EPE_BrightButton(this,true)" onmouseout="EPE_BrightButton(this,false)" title="Processing the photo..." />
+                            
+                            
+                        </td>
+                        <!--the buttons for further processing (at image-processing state)-->
+                        <td id="processor" style="display: none">
+                            <img src="images/invert.png" onclick="EPE_Process(1)" title="Invert" />
+                            <img src="images/grayscale.png" onclick="EPE_Process(30)" title="Gray scale" />
+                            <img src="images/silhouette.png" onclick="EPE_Process(34)" title="Silhouette (Black-and-white)" />
+                            <img src="images/sepia.png" onclick="EPE_Process(3)" title="Sepia" />
+                            <img src="images/indent.png" onclick="EPE_Process(4)" title="Carving with indent" />
+                            <img src="images/convex.png" onclick="EPE_Process(5)" title="Carving convexly" />
+                            <img src="images/brightup.png" onclick="EPE_Process(6,50)" title="More brighter" />
+                            <img src="images/brightdown.png" onclick="EPE_Process(6,-50)" title="Less brighter" />
+                            <img src="images/redcover.png" onclick="EPE_Process(31)" title="Red covering" />
+                            <img src="images/greencover.png" onclick="EPE_Process(32)" title="Green covering" />
+                            <img src="images/bluecover.png" onclick="EPE_Process(33)" title="Blue covering" />
+                            <img src="images/exit.png" onclick="EPE_ExitProcessor()" style="padding-left: 30px;" title="Close processor panel" />
+                        </td>
+                        <!--the progress-bar with a cancel button to cancel the processing-->
+                        <td id="io" style="text-align: right; display: none">
+                            <span id="info" style="font-size: 14pt; font-family: MV Boli"></span>
+                            <img src="images/exit.png" onclick="EPE_ExitIO(this)" style="padding-left: 30px;" title="Отмена и возврат" />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <!--the main content, which is split into 3 parts: left/middle/right-->
+        <tr id="main">
+            <!--the album to display the thumbnails of photos opened/uploaded that can be dragged onto the canvas for editing-->
+            <!--there is a small button to show or hide the album-->
+            <td>
+                <div id="album" title="Album: нажмите кнопку Открыть на панели инструментов, чтобы загрузить фотографии с вашего устройства.">
+                    <div style="text-align: right;">
+                        <img src="images/arrowleft.gif" onclick="ShowAlbum(this)" title="Cвернуть окно" />
+                    </div>
+                </div>
+            </td>
+            <!--the canvas where the photo can be dragged onto and edited.-->
+            <!--canvas is the one of the main new features of HTML5-->
+            <td id="td">
+                <div id="pad">
+                    <div id="drop" dropzone="link" ondrop="EPE_Drop(event)" ondragover="EPE_AllowDrop(event)" title="Перетащите свою фотографию сюда, чтобы отредактировать её.">
+                        <canvas id="c"> </canvas>    
+                    </div>
+                </div>
+            </td>
+            <!--all stickers that can be dragged onto the canvas to decorate the photo-->
+            <!--it contains a small button to show or hide this area-->
+            <td>
+                <div id="props" title="stickers: select/перетащите наклейку и приклейте её на свою фотографию.">
+                    <div style="text-align: left; width: 200px;">
+                        <img src="images/arrowright.gif" onclick="ShowProps(this)" title="Свернуть окно" />
+                    </div>
+                    <div class="mops">
+
+                    </div>
+                </div>
+                <!-- <div id="redack">
+                    <div style="text-align: left;">
+                    <h1>HHHHHHHFDDDDDDDDDD FFFFF</h1>
+                    </div>
+                </div> -->
+            </td>
+            
+        </tr>
+        <!--the footer that contains the status-grid and hyperlinks-->
+        <tr id="footbar" class="Footbar" ondrop="EPE_DropOut(event)" ondragover="EPE_AllowDrop(event)">
+            <td colspan="3" style="text-align: left; vertical-align: middle; white-space: nowrap;">
+                <table style="width: 100%">
+                    <tr>
+                        <!--a grid to indicate the current status (i.e. drawing, processing) and is updated dynamically-->
+                        <td style="width: 200px"><span id="status"></span></td>
+                        <td style="text-align: left; padding-right: 10px">
+                            <a href="readme.txt" target="_blank">
+                               
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <!--other elements prepared to be used in the background-->
+
+    <!--the file uploader that it is always hidden, the open-button will enable the user to select a photo and put the file here to be uploaded to the album.-->
+    <!--refer to EPE_Load(), use click() to start the file-selection.-->
+    <input id="uploader" multiple="multiple" style="display: none;" type="file" accept="image/*" onchange="EPE_OpenPhotos(this)" />
+
+    <!--a canvas used to process image in the background (such as BrightenImage)-->
+    <!--refer to BrightenImage()/EPE_SetColor()-->
+    <canvas id="cc" width="40" height="40" style="display: none;"></canvas>
+    <!-- <script src="jscolor.js"></script>
+    <script src="script.js"></script> -->
+</body>
+</html>
